@@ -27,14 +27,14 @@ def test_form():
     browser.element('#uploadPicture').send_keys(rf'C:\Users\olgaya\Desktop\foto.jpg')
     browser.element('#submit').press_enter()
 
-    browser.all('.table-responsive:nth-of-type(1) td').should(have.texts(
-        'Student Name', 'Olga YA',
-        'Student Email', 'name@example.com',
-        'Gender', 'Female',
-        'Mobile', '1234567891',
-        'Date of Birth', '11 May,1999',
-        'Subjects', 'Computer Science',
-        'Hobbies', 'Reading',
-        'Picture', 'foto.jpg',
-        'Address', 'Moscow sity',
-        'State and City', 'NCR Delhi'))
+    browser.all('.table-responsive:nth-of-type(1) td:nth-child(2)').should(have.texts(
+         'Olga YA',
+         'name@example.com',
+         'Female',
+         '1234567891',
+         '11 May,1999',
+         'Computer Science',
+         'Reading',
+         'foto.jpg',
+         'Moscow sity',
+         'NCR Delhi'))
