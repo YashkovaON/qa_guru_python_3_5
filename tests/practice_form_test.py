@@ -1,7 +1,7 @@
 from selene.support.shared import browser
-from selene import be, have
+from selene import have
 from selene import command
-
+import os
 
 def test_form():
     browser.open('/automation-practice-form')
@@ -24,7 +24,8 @@ def test_form():
     browser.element('[value="1999"]').click()
     browser.element('[class="react-datepicker__day react-datepicker__day--011"]').click()
     browser.element('#subjectsInput').type('Com').press_enter()
-    browser.element('#uploadPicture').send_keys(rf'C:\Users\olgaya\Desktop\foto.jpg')
+    browser.element('#uploadPicture').set_value(
+        os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, 'tests/foto.jpg')))
     browser.element('#submit').press_enter()
 
     browser.all('.table-responsive td:nth-child(2)').should(have.texts(
